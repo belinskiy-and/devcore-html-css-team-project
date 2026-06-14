@@ -60,43 +60,32 @@
   flex: 1;
 }
 
-/* Plus/minus toggle icon built from two CSS lines */
 .faq-icon {
   position: relative;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: 17px;
+  height: 10px;
 }
 
-.faq-icon::before,
-.faq-icon::after {
-  content: '';
+.faq-icon svg {
+  display: block;
+  color: var(--secondary-text-color);
+  transition: opacity var(--transition-function);
+}
+
+.faq-icon-up {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: var(--secondary-text-color);
-  transition:
-    transform var(--transition-function),
-    opacity var(--transition-function);
-}
-
-/* Horizontal bar — always visible */
-.faq-icon::before {
-  width: 16px;
-  height: 2px;
-  transform: translate(-50%, -50%);
-}
-
-/* Vertical bar — visible when closed (+), hidden when open (−) */
-.faq-icon::after {
-  width: 2px;
-  height: 16px;
-  transform: translate(-50%, -50%);
-}
-
-.faq-details[open] .faq-icon::after {
-  transform: translate(-50%, -50%) rotate(90deg);
+  top: 0;
+  left: 0;
   opacity: 0;
+}
+
+.faq-details[open] .faq-icon-down {
+  opacity: 0;
+}
+
+.faq-details[open] .faq-icon-up {
+  opacity: 1;
 }
 
 .faq-answer {
